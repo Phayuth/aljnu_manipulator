@@ -1,1 +1,1 @@
-# aljnu_manipulator
+# AIRLAB JNU Manipulator ROS2

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot name="mobile_manipulator" xmlns:xacro="http://wiki.ros.org/xacro">
+
+    <!-- Include UR5e -->
+    <xacro:include filename="$(find aljnump_description)/urdf/ur5e/ur.urdf.xacro" />
+
+    <!-- Include Onrobot SGA -->
+    <xacro:include filename="$(find onrobotsg_description)/urdf/sga/onrobotsg_a_macro.urdf.xacro" />
+
+    <xacro:onrobotsg_a prefix="" parent="ur5e_tool0" >
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:onrobotsg_a>
+
+</robot>

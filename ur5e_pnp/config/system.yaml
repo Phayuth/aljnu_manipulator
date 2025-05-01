@@ -1,0 +1,42 @@
+pnp_real:
+  ros__parameters:
+    chain:
+      root: ur5e_base_link
+      tip: onrobotsg_tip
+
+    key:
+      gripper_open: j
+      gripper_close: k
+
+    constant:
+      gripper_open: 100.0
+      gripper_close: 50.0
+
+    joint:
+      name:
+        [
+          "ur5e_shoulder_pan_joint",
+          "ur5e_shoulder_lift_joint",
+          "ur5e_elbow_joint",
+          "ur5e_wrist_1_joint",
+          "ur5e_wrist_2_joint",
+          "ur5e_wrist_3_joint",
+        ]
+      dropj:
+        [
+          0.3218642473220825,
+          -2.3846870861449183,
+          -0.8765149116516113,
+          -1.3730150026134034,
+          1.5501008033752441,
+          0.06399798393249512,
+        ]
+      homej:
+        [
+          -1.7186427116394043,
+          -0.8601207298091431,
+          -1.533746067677633,
+          -1.4423204225352784,
+          1.5499086380004883,
+          0.03100419044494629,
+        ]
