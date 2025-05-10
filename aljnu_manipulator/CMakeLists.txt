@@ -13,7 +13,7 @@ find_package(ur_robot_driver REQUIRED)
 find_package(ur_description REQUIRED)
 
 # onrobotsg gripper package
-find_package(onrobotsg REQUIRED)
+# find_package(onrobotsg REQUIRED) use exec_depend in package.xml instead
 find_package(onrobotsg_description REQUIRED)
 find_package(onrobotsg_interfaces REQUIRED)
 
