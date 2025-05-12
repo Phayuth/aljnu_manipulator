@@ -11,7 +11,11 @@ class JointTrajectoryControllerClient(rclpy.node.Node):
 
     def __init__(self):
         super().__init__("joint_trajectory_controller_client")
-        self.actcli = ActionClient(self, FollowJointTrajectory, "/scaled_joint_trajectory_controller/follow_joint_trajectory")
+        self.actcli = ActionClient(
+            self,
+            FollowJointTrajectory,
+            "/scaled_joint_trajectory_controller/follow_joint_trajectory",
+        )
         self.jntNames = [
             "ur5e_shoulder_pan_joint",
             "ur5e_shoulder_lift_joint",
@@ -83,13 +87,19 @@ class JointTrajectoryControllerClient(rclpy.node.Node):
         for i in range(self.pos.shape[1]):
             point = JointTrajectoryPoint()
             point.positions = self.pos[:, i].tolist()
-            point.velocities = self.velo[:, i].tolist() if self.velo is not None else [0.0] * 6
-            point.accelerations = self.acc[:, i].tolist() if self.acc is not None else [0.0] * 6
+            point.velocities = (
+                self.velo[:, i].tolist() if self.velo is not None else [0.0] * 6
+            )
+            point.accelerations = (
+                self.acc[:, i].tolist() if self.acc is not None else [0.0] * 6
+            )
             point.time_from_start = RCLDuration(seconds=self.times[i]).to_msg()
             gMsg.trajectory.points.append(point)
 
         self.actcli.wait_for_server()
-        self.sendGoalFuture = self.actcli.send_goal_async(gMsg, feedback_callback=self.feedback_callback)
+        self.sendGoalFuture = self.actcli.send_goal_async(
+            gMsg, feedback_callback=self.feedback_callback
+        )
         self.sendGoalFuture.add_done_callback(self.goal_response_callback)
 
     def goal_response_callback(self, future):
@@ -120,7 +130,9 @@ class JointTrajectoryControllerClient(rclpy.node.Node):
         if result.error_code == 0:
             self.get_logger().info("Goal succeeded!")
         else:
-            self.get_logger().info("Goal failed with status: %d" % result.error_string)
+            self.get_logger().info(
+                "Goal failed with status: %d" % result.error_string
+            )
         rclpy.shutdown()
 
 

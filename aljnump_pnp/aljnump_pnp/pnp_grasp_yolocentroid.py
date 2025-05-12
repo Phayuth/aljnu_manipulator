@@ -22,7 +22,13 @@ class CVYOLOCentroid:
                     if classesName == interestName:
                         # imgMask += r.masks.masks[bi, :, :].cpu().numpy()
                         if edgeErode:
-                            indvMask.append(cv2.erode(r.masks.masks[bi, :, :].cpu().numpy(), self.erodeKernel, cv2.BORDER_REFLECT))
+                            indvMask.append(
+                                cv2.erode(
+                                    r.masks.masks[bi, :, :].cpu().numpy(),
+                                    self.erodeKernel,
+                                    cv2.BORDER_REFLECT,
+                                )
+                            )
                         else:
                             indvMask.append(r.masks.masks[bi, :, :].cpu().numpy())
 
@@ -30,7 +36,11 @@ class CVYOLOCentroid:
         if len(indvMask) != 0:
             indvCentroid = []
             for objMask in indvMask:
-                contours, _ = cv2.findContours(objMask.astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+                contours, _ = cv2.findContours(
+                    objMask.astype(np.uint8),
+                    cv2.RETR_EXTERNAL,
+                    cv2.CHAIN_APPROX_SIMPLE,
+                )
                 M = cv2.moments(contours[0])
                 if M["m00"] != 0:
                     cx = int(M["m10"] / M["m00"])
@@ -40,6 +50,14 @@ class CVYOLOCentroid:
                     if drawImg:
                         cv2.drawContours(img, contours[0], -1, (0, 255, 0), 3)
                         cv2.circle(img, (cx, cy), 3, (255, 0, 255), 3)
-                        cv2.putText(img, text=f"centroid at {cx}, {cy}", org=(cx, cy), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.5, thickness=1, color=(255, 0, 255))
+                        cv2.putText(
+                            img,
+                            text=f"centroid at {cx}, {cy}",
+                            org=(cx, cy),
+                            fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                            fontScale=0.5,
+                            thickness=1,
+                            color=(255, 0, 255),
+                        )
 
         return indvCentroid

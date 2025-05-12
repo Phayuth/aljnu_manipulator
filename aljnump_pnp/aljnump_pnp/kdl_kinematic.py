@@ -70,9 +70,6 @@ class KDLChain:
         return frame
 
     def make_joint_list(self, joint_positions):
-        if len(joint_positions) != self.jointnum:
-            raise ValueError("Joint positions length does not match the number of joints in the chain.")
-
         joint_list = []
         for i in range(self.jointnum):
             joint_list.append(joint_positions[i])

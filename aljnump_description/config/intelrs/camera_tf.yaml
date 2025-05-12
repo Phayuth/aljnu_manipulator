@@ -1,0 +1,11 @@
+parent_frame_id: ur5e_tool0
+child_frame_id: camera_link
+translation:
+  x: -0.01692856
+  y: -0.0914942
+  z: 0.02279194
+rotation:
+  x: 0.51734014
+  y: -0.49873382
+  z: 0.49523948
+  w: 0.48822291

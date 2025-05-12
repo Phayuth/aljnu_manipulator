@@ -1,18 +1,19 @@
-pnp_real:
+pnp_real_run_node:
   ros__parameters:
     chain:
       root: ur5e_base_link
       tip: onrobotsg_tip
+      camera: camera_link
 
-    key:
-      gripper_open: j
-      gripper_close: k
-
-    constant:
-      gripper_open: 100.0
-      gripper_close: 50.0
+    gripper:
+      gripper_open: 100.0 # mm
+      gripper_close: 50.0 # mm
+      command_service: /gripper_command
+      grasp_pose_topic: /grasp_pose
 
     joint:
+      state_topic: /joint_states
+      command_action: /scaled_joint_trajectory_controller/follow_joint_trajectory
       name:
         [
           "ur5e_shoulder_pan_joint",

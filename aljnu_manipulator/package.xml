@@ -8,7 +8,16 @@
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>ur_robot_driver</exec_depend>
+  <exec_depend>ur_description</exec_depend>
+
   <exec_depend>onrobotsg</exec_depend> <!-- for pure python package -->
+  <exec_depend>onrobotsg_description</exec_depend>
+  <exec_depend>onrobotsg_interfaces</exec_depend>
+
+  <exec_depend>aljnump_description</exec_depend>
+  <exec_depend>aljnump_pnp</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

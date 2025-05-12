@@ -1,6 +1,7 @@
 onrobotsg_node:
   ros__parameters:
     ip: "192.168.0.137"
-    port: "502"
-    model_id: "4"
+    port: 502
+    model_id: 4
     gentle: true
+    use_fake_hardware: true

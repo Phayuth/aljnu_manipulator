@@ -1,4 +1,4 @@
-perception_node:
+pnp_perception_node:
   ros__parameters:
     weight: yolov8x-seg.pt
     pick_object: apple
@@ -6,4 +6,4 @@ perception_node:
     pcd_topic: /camera/depth/color/points
     mask_topic: /crop_detection
     grasp_topic: /grasp_pose
-    grasp_link: camera_link
+    grasp_link: /camera_link
